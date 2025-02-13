@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Blockly</title>
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Game Blockly</h1>
+    <button onclick="jalankanKode()">Jalankan</button>
+    <div id="blocklyDiv" style="height: 480px; width: 100%;"></div>
+
+    <xml id="toolbox" style="display: none">
+        <block type="controls_repeat_ext"></block>
+        <block type="math_number"></block>
+        <block type="move_forward"></block>
+        <block type="turn_right"></block>
+    </xml>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Blockly</title>
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+    <style>
+        #blocklyDiv { height: 400px; width: 600px; float: left; }
+        canvas { border: 1px solid black; }
+    </style>
+</head>
+<body>
+    <h1>Game Sederhana dengan Blockly</h1>
+    
+    <!-- Area Blockly -->
+    <div id="blocklyDiv"></div>
+    
+    <!-- Area Game -->
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    
+    <xml id="toolbox" style="display: none">
+        <block type="controls_repeat_ext"></block>
+        <block type="math_number"></block>
+        <block type="move_forward"></block>
+        <block type="turn_right"></block>
+    </xml>
+
+    <script>
+        var workspace = Blockly.inject('blocklyDiv', {
+            toolbox: document.getElementById('toolbox')
+        });
+
+        function jalankanKode() {
+            var code = Blockly.JavaScript.workspaceToCode(workspace);
+            eval(code);
+        }
+    </script>
+    
+    <button onclick="jalankanKode()">Jalankan</button>
+
+</body>
+</html>
